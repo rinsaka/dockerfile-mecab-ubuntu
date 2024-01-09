@@ -1,7 +1,7 @@
 # What's this?
 
 - [MeCab](https://taku910.github.io/mecab/) による形態素解析と [CaboCha/南瓜](https://taku910.github.io/cabocha/) による係り受け解析を実行する環境を構築するための Dockerfile です．
-- 辞書として mecab-ipadic-neologd をインストールします．
+- 辞書として [mecab-ipadic-neologd](https://github.com/neologd/mecab-ipadic-neologd) をインストールします．
 - イメージの作成には20分程度の時間が必要です．
 - コマンドラインから形態素解析や係り受け解析ができるようになります．
 - 次の手順で作成した Apple Silicon イメージは Docker Hub (https://hub.docker.com/r/rinsaka/mecab-ubuntu) で公開しています．
