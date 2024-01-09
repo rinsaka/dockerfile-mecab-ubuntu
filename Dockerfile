@@ -1,5 +1,8 @@
 FROM ubuntu:22.04
 
+ENV TARGET=arm
+#ENV TARGET=x86_64
+
 RUN apt-get -y update && \
   apt-get -y upgrade && \
   apt-get install -y build-essential && \
@@ -31,7 +34,7 @@ RUN mkdir -p /work/crf && \
   curl -X GET -L 'https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ' -o CRF++-0.58.tar.gz && \
   tar xvzf CRF++-0.58.tar.gz && \
   cd CRF++-0.58 && \
-  ./configure --build=arm && \
+  ./configure --build=${TARGET} && \
   make && \
   sudo make install && \
   sudo ldconfig && \
@@ -46,7 +49,7 @@ RUN cd /work/cabocha && \
   curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=${FILE_ID}" -o ${FILE_NAME} && \
   tar xvjf cabocha-0.69.tar.bz2 && \
   cd cabocha-0.69 && \
-  ./configure --with-charset=UTF8 --build=arm && \
+  ./configure --with-charset=UTF8 --build=${TARGET} && \
   make && \
   sudo make install && \
   cd / && \

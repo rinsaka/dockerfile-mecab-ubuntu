@@ -11,7 +11,8 @@
 
 ### 環境設定
 - この Dockerfile は Apple Silicon 向けに作成されています．
-- Windows など Intel (AMD) 向けにイメージを作成するには Dockerfile 内の `--build=arm` を `--build=x86_64` に書き換えてください（2か所あります）．
+- Windows など Intel (AMD) 向けにイメージを作成するには Dockerfile 内の `ENV TARGET=arm` をコメントアウトして `ENV TARGET=x86_64` を有効にしてください．
+  - なお，`ENV TARGET=arm` が実際の動作環境と異なっても動作します（ただし警告は表示されます）．
 
 ### イメージの作成
 
