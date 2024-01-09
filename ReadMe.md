@@ -8,6 +8,10 @@
 
 ## イメージの作成から Docker Hub へのプッシュまで（イメージ開発者向け）
 
+### 環境設定
+- この Dockerfile は Apple Silicon 向けに作成されています．
+- Windows など Intel 向けにイメージを作成するには Dockerfile 内の `--build=arm` を `--build=x86_64` に書き換えてください（2か所あります）．
+
 ### イメージの作成
 
 - コマンド
