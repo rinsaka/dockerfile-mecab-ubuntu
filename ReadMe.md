@@ -255,7 +255,7 @@ EOS
 ```
 % docker run --rm -i -t rinsaka/mecab-ubuntu /bin/bash
 root@e90a4173e9ae:/# ls
-bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var  work
+bin  boot  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 root@e90a4173e9ae:/# exit
 exit
 %
