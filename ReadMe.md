@@ -269,10 +269,11 @@ exit
 - サーバなどで連続して形態素解析を実行する場合にはコンテナをデーモンとしてバックグラウンドで起動しておくとよいでしょう．
 - 起動時に `-d` オプションを指定してバックグラウンドでデーモンとして起動できます．
 - 利用時には `docker exec` コマンドを使います．
+- コンテナの停止には `docker container stop`，再始動には `docker container start`，停止したコンテナの削除には `docker container rm` コマンドを使います．
 - 下のコマンドの説明は次のとおりです．
 
 1. コンテナが存在しないことを確認
-2. コンテナに `mecabd` という名前をつけてデーモンとしてバックグラウンドで起動
+2. コンテナに `mecabd` という名前をつけ，`-d` オプションによりデーモンとしてバックグラウンドで起動
 3. コンテナが実行中であることを確認
 4. `docker exec` コマンドで形態素解析（ファイルを読み込む）
 5. `docker exec` コマンドで形態素解析（文字列を渡す）
@@ -283,14 +284,14 @@ exit
 10. コンテナが存在しない（削除できた）ことを確認
 
 ```
-% docker container ls -a      ...(1)
+% docker container ls -a                                  ...(1)
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 % docker run -i -d --name mecabd rinsaka/mecab-ubuntu     ...(2)
 18fb5a69a7e1ea8e0e1c5c466e64e3a226801c35f843a868d5cce74b00bbf515
-% docker container ls     ...(3)
+% docker container ls                                     ...(3)
 CONTAINER ID   IMAGE                  COMMAND            CREATED         STATUS         PORTS     NAMES
 18fb5a69a7e1   rinsaka/mecab-ubuntu   "/usr/bin/mecab"   5 seconds ago   Up 5 seconds             mecabd
-% docker exec -i mecabd mecab < sample.txt      ...(4)
+% docker exec -i mecabd mecab < sample.txt                ...(4)
 今日    名詞,副詞可能,*,*,*,*,今日,キョウ,キョー
 は      助詞,係助詞,*,*,*,*,は,ハ,ワ
 メロンパン      名詞,固有名詞,一般,*,*,*,メロンパン,メロンパン,メロンパン
@@ -309,17 +310,17 @@ EOS
 まし    助動詞,*,*,*,特殊・マス,連用形,ます,マシ,マシ
 た      助動詞,*,*,*,特殊・タ,基本形,た,タ,タ
 EOS
-% docker container ls      ...(6)
+% docker container ls                                     ...(6)
 CONTAINER ID   IMAGE                  COMMAND            CREATED          STATUS          PORTS     NAMES
 18fb5a69a7e1   rinsaka/mecab-ubuntu   "/usr/bin/mecab"   57 seconds ago   Up 57 seconds             mecabd
-% docker container stop mecabd     ...(7)
+% docker container stop mecabd                            ...(7)
 mecabd
-% docker container ls -a     ...(8)
+% docker container ls -a                                  ...(8)
 CONTAINER ID   IMAGE                  COMMAND            CREATED              STATUS                       PORTS     NAMES
 18fb5a69a7e1   rinsaka/mecab-ubuntu   "/usr/bin/mecab"   About a minute ago   Exited (137) 4 seconds ago             mecabd
-% docker container rm mecabd     ...(9)
+% docker container rm mecabd                              ...(9)
 mecabd
-% docker container ls -a     ...(10)
+% docker container ls -a                                  ...(10)
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 %
 ```
