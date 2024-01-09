@@ -4,13 +4,14 @@
 - 辞書として mecab-ipadic-neologd をインストールします．
 - イメージの作成には20分程度の時間が必要です．
 - コマンドラインから形態素解析や係り受け解析ができるようになります．
-- 次の手順で作成したイメージは Docker Hub (https://hub.docker.com/r/rinsaka/mecab-ubuntu) で公開しています．
+- 次の手順で作成した Apple Silicon イメージは Docker Hub (https://hub.docker.com/r/rinsaka/mecab-ubuntu) で公開しています．
+  - Intel (AMD) 向けのイメージも Docker Hub (https://hub.docker.com/r/rinsaka/mecab-ubuntu-x86_64) で公開しています．
 
 ## イメージの作成から Docker Hub へのプッシュまで（イメージ開発者向け）
 
 ### 環境設定
 - この Dockerfile は Apple Silicon 向けに作成されています．
-- Windows など Intel 向けにイメージを作成するには Dockerfile 内の `--build=arm` を `--build=x86_64` に書き換えてください（2か所あります）．
+- Windows など Intel (AMD) 向けにイメージを作成するには Dockerfile 内の `--build=arm` を `--build=x86_64` に書き換えてください（2か所あります）．
 
 ### イメージの作成
 
